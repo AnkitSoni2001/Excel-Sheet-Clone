@@ -55,7 +55,7 @@ bold.addEventListener("click", (e) => {
 })
 
 function getCellAndCellProp(address) {
-    let [rid, cid] = decodeRIDCIDFromAddess(address);
+    let [rid, cid] = decodeRIDCIDFromAddress(address);
     //Access cell & storage object
     let cell = document.querySelector(`.cell[rid = "${rid}"][cid ="${cid}"]`);
     let cellProp = sheetDB[rid][cid];
@@ -63,7 +63,7 @@ function getCellAndCellProp(address) {
 }
 
 
-function decodeRIDCIDFromAddess(address) {
+function decodeRIDCIDFromAddress(address) {
     // decoding address "A1" to row & col  value like [1][3] for storage
     let rid = Number(address.slice(1) - 1); //"1" -> 0
     let cid = Number(address.charCodeAt(0)) - 65; // "A" -> 65
@@ -161,7 +161,7 @@ function addEventListenerToAttachCellProperties(cell) {
     // Work 
     cell.addEventListener("click", (e) => {
         let address = addressBar.value;
-        let [rid, cid] = decodeRIDCIDFromAddess(address);
+        let [rid, cid] = decodeRIDCIDFromAddress(address);
         let cellProp = sheetDB[rid][cid];
 
         //Apply cell Properties

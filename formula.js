@@ -30,17 +30,17 @@ formulaBar.addEventListener("keydown", (e) =>{
 
         //Part of cycleValidation
 
-        // addChildToGraphComponent(inputFormula, address);
-        
+        addChildToGraphComponent(inputFormula, address);
+
         //Check formula is cyclic or not, than only evaluate
         // If True -> cyclic,  False -> acyclic(Not cyclic)
 
-        // let isCyclic = isGraphCyclic(graphComponentMatrix);
-        // if(isCyclic === true){
-        //     alert("Your formula is cyclic");
-        //     removeChildFromGraphComponent(inputFormula, address);
-        //     return;
-        // }
+        let isCyclic = isGraphCyclic(graphComponentMatrix);
+        if(isCyclic === true){
+            alert("Your formula is cyclic");
+            removeChildFromGraphComponent(inputFormula, address);
+            return;
+        }
 
 
         let evaluatedValue = evaluateFormula(inputFormula);
@@ -121,32 +121,32 @@ function setCellUIAndCellProp(evaluatedValue, formula, address){
 
 //Part of cycleValidation
 
-// function addChildToGraphComponent(formula, childAddress){
-//     let [crid, ccid] = decodeRIDCIDFromAddress(childAddress);
-//     let encodedFormula = formula.split(" ");
-//     for(let i = 0; i < encodedFormula.length; i++){
-//         let asciiValue = encodedFormula[i].charCodeAt(0);
-//         if(asciiValue >= 65 && asciiValue <= 90){
-//             let [prid, pcid] = decodeRIDCIDFromAddress(encodedFormula[i]);
+function addChildToGraphComponent(formula, childAddress){
+    let [crid, ccid] = decodeRIDCIDFromAddress(childAddress);
+    let encodedFormula = formula.split(" ");
+    for(let i = 0; i < encodedFormula.length; i++){
+        let asciiValue = encodedFormula[i].charCodeAt(0);
+        if(asciiValue >= 65 && asciiValue <= 90){
+            let [prid, pcid] = decodeRIDCIDFromAddress(encodedFormula[i]);
 
-//             //B1: A1 + 10
-//             // rid -> i, cid -> j
-//             graphComponentMatrix[prid][pcid].push([crid, ccid]);
-//         }
-//     }
-// }
+            //B1: A1 + 10
+            // rid -> i, cid -> j
+            graphComponentMatrix[prid][pcid].push([crid, ccid]);
+        }
+    }
+}
 
-// function removeChildFromGraphComponent(formula, childAddress){
-//     let [crid, ccid] = decodeRIDCIDFromAddess(childAddress);
-//     let encodedFormula = formula.split(" ");
-//     for(let i = 0; i < encodedFormula.length; i++){
-//         let asciiValue = encodedFormula[i].charCodeAt(0);
-//         if(asciiValue >= 65 && asciiValue <= 90){
-//             let [prid, pcid] = decodeRIDCIDFromAddess(encodedFormula[i]);
+function removeChildFromGraphComponent(formula, childAddress){
+    let [crid, ccid] = decodeRIDCIDFromAddress(childAddress);
+    let encodedFormula = formula.split(" ");
+    for(let i = 0; i < encodedFormula.length; i++){
+        let asciiValue = encodedFormula[i].charCodeAt(0);
+        if(asciiValue >= 65 && asciiValue <= 90){
+            let [prid, pcid] = decodeRIDCIDFromAddress(encodedFormula[i]);
 
-//             //B1: A1 + 10
-//             // rid -> i, cid -> j
-//             graphComponentMatrix[prid][pcid].pop();
-//         }
-//     }
-// }
+            //B1: A1 + 10
+            // rid -> i, cid -> j
+            graphComponentMatrix[prid][pcid].pop();
+        }
+    }
+}

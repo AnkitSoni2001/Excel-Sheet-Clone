@@ -1,17 +1,5 @@
-//Stroge -> 2D array (Basic needed)
-let graphComponentMatrix = []; // It is use to represent a SINGLE CELL
-
-for (let i = 0; i < rows; i++) {
-    let row = [];
-    for (let j = 0; j < cols; j++) {
-        //Why array? ->Because More than 1 child relation(dependency)
-        row.push([]);
-    }
-    graphComponentMatrix.push(row);
-}
-
 // If True -> cyclic,  False -> acyclic(Not cyclic)
-function isGraphCyclic(graphComponentMatrix) {
+function isGraphCylicTrackPath(graphComponentMatrix) {
     // Dependency -> visited, dfsvisited (2D array)
     let visited = [];   // Node visit trace
     let dfsVisited = [];  // Stack visit trace
@@ -48,7 +36,7 @@ function isGraphCyclic(graphComponentMatrix) {
 // Return True/False 
 // If True -> cyclic,  False -> acyclic(Not cyclic)
 
-function dfsCycleDetection(graphComponentMatrix, srcr, srcc, visited, dfsVisited) {
+function dfsCycleDetectionTracePath(graphComponentMatrix, srcr, srcc, visited, dfsVisited) {
     visited[srcr][srcc] = true;     // Start
     dfsVisited[srcr][srcc] = true;  //Start
 

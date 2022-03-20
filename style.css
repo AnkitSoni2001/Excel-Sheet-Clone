@@ -159,20 +159,36 @@ body{
     margin-left: 0.3rem;
     margin-right: 0.3rem;
 }
+.sheet-add-icon:hover{
+    cursor: pointer;
+}
 .sheets-folder-cont{
-    height: 80%;
-    width: 100vw;
-    /* background-color: yellow; */
     display: flex;
     align-items: center;
+    height: 80%;
+    width: 5rem;;
+    width: calc(100vw - 2vw);
+    overflow: auto;
+    /* background-color: yellow; */
 }
-.sheet-floder{
+.sheet-folder{
+    height: 80%;
     text-decoration:underline;
     font-weight: bold;
     text-decoration-thickness: 3px;
     font-size: 0.9rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
+.sheet-content{
+    width: 5rem;
+    /* background-color: rebeccapurple; */
+}
+.sheet-content:hover{
+    cursor: pointer;
+}
 .color-prop{
     position: relative;
 }
